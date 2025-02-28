@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>CPAN116 - Assignment 02: Desk Calc</title>
+
+		<link
+			rel="stylesheet"
+			href="styles_vga.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="crt.css"
+		/>
+
+		<script
+			type="module"
+			src="app.js"
+		></script>
+	</head>
+
+	<body>
+		<div class="bodyContent">
+			<header>
+				<p>Cpan Webdows [Version 116.2025.02.28]</p>
+				<p>Volume in C Drive has label boss_claw</p>
+				<p>77MHz CPU Clock</p>
+				<p>Loading ALGORITHMS.ASSGN02</p>
+				<p>Ready...</p>
+				<p>Running BC-DOS</p>
+				<p>C:\> <span class="cursor"></span></p>
+			</header>
+
+			<main>
+				<div
+					id="name_cta"
+					class="border_double"
+				>
+					<h1>░ ░ ░░ ░ ░░░░▒▓ Desk Calculator ▓▒░░░░ ░ ░░ ░ ░</h1>
+
+					<div class="part">
+						<p>Please input your Desk Details</p>
+
+						<div class="h_container">
+							Length
+							<input
+								id="desk_length"
+								type="number"
+								value="36"
+							/>
+						</div>
+
+						<div class="h_container">
+							Width
+							<input
+								id="desk_width"
+								type="number"
+								value="24"
+							/>
+						</div>
+
+						<div class="h_container">
+							Number of Drawers
+							<input
+								id="desk_drawers"
+								type="number"
+								value="3"
+							/>
+						</div>
+
+						<div class="h_container">
+							Type of Wood
+							<select id="type_of_wood">
+								<option value="pine">Pine</option>
+								<option value="mahogany">Mahogany</option>
+								<option value="oak">Oak</option>
+							</select>
+                            
+							<button
+								id="calc_btn"
+								type="button"
+							>
+								Calculate
+							</button>
+						</div>
+
+						<pre id="desk_output">Desk output will appear here.</pre>
+					</div>
+				</div>
+
+				<div class="border_double">
+					<h1>Example Desk A</h1>
+
+					<div class="part">
+						<p>Length: 90 cm, Width: 90 cm, Type of wood: “Mahogany”, Number of drawers: 2</p>
+						<pre id="desk_output_a">Desk output A will appear here.</pre>
+					</div>
+
+					<h1>Example Desk B</h1>
+					<div class="part">
+						<p>Length: 50 cm, Width: 45 cm, Type of wood: “Oak”, Number of drawers: 3</p>
+						<pre id="desk_output_b">Desk output B will appear here.</pre>
+					</div>
+
+					<h1>Example Desk C</h1>
+					<div class="part">
+						<p>Length: 75 cm, Width: 68 cm, Type of wood: “Pine”, Number of drawers: 1</p>
+						<pre id="desk_output_c">Desk output C will appear here.</pre>
+					</div>
+				</div>
+			</main>
+		</div>
+
+		<script type="module">
+			import { calc_output } from "./app.js";
+
+			// CUSTOM
+			document.getElementById("calc_btn").addEventListener("click", () => {
+				calc_output(document.getElementById("desk_length").value, document.getElementById("desk_width").value, document.getElementById("desk_drawers").value, document.getElementById("type_of_wood").value, document.getElementById("desk_output"));
+			});
+
+			// AUTO RUN
+			document.addEventListener("DOMContentLoaded", () => {
+				calc_output(90.0, 90.0, 2, "mahogany", document.getElementById("desk_output_a"));
+				calc_output(50.0, 45.0, 3, "oak", document.getElementById("desk_output_b"));
+				calc_output(75.0, 68.0, 1, "pine", document.getElementById("desk_output_c"));
+			});
+		</script>
+	</body>
+</html>
