@@ -1,5 +1,13 @@
 // ASSIGNMENT 02 - DESK CALC
 
+export function main(output_div_a, output_div_b, output_div_c) {
+	// DO AUTO TESTS w/REUSE
+	calc_output(90.0, 90.0, 2, "mahogany", output_div_a);
+	calc_output(50.0, 45.0, 3, "oak", output_div_b);
+	calc_output(75.0, 68.0, 1, "pine", output_div_c);
+}
+
+
 export function calc_output(desk_length, desk_width, desk_drawers, type_of_wood, output_div) {
 	console.log("CALC IT [", desk_length, desk_width, desk_drawers, type_of_wood, "]");
 
@@ -8,7 +16,7 @@ export function calc_output(desk_length, desk_width, desk_drawers, type_of_wood,
     newDesk.calculateCost();
 
 	// MAKE THE OUTPUT TEXT USING THE GETTERS
-	let retText = "Your order of computer desk\n"
+	let retText = "Your order of computer desk\n\n"
 
 
     // SURFACE
@@ -19,11 +27,11 @@ export function calc_output(desk_length, desk_width, desk_drawers, type_of_wood,
 	}
 
     // DRAWERs
-	retText += `It has ${newDesk.getDrawers()} drawers.\n`;
+	retText += `\nIt has ${newDesk.getDrawers()} drawers.\n`;
 
 
     // WOOD TYPE
-	retText += `It's made of ${newDesk.getWoodType()}.\n`;
+	retText += `\nIt's made of ${newDesk.getWoodType()}.\n`;
 
 	if (newDesk.getWoodTypeCharge() > 0) {
 		retText += `Which is an extra charge of $${newDesk.getWoodTypeCharge()}.\n`;
@@ -88,11 +96,6 @@ class Desk {
 		this.#totalCost += this.#woodTypeCharge;
 	}
 
-	getTotalCost() {
-		this.calculateCost();
-		return this.#totalCost;
-	}
-
 	getLength() {
 		return this.#length;
 	}
@@ -105,6 +108,27 @@ class Desk {
 	getWoodType() {
 		return this.#woodType;
 	}
+	
+	// MADE SETTERS, BUT DIDN'T USE THEM
+	setLength(new_val) {
+		this.#length = new_val;
+	}
+	setWidth(new_val) {
+		this.#width = new_val;
+	}
+	setDrawers(new_val) {
+		this.#drawers = new_val;
+	}
+	setWoodType(new_val) {
+		this.#woodType = new_val;
+	}
+
+
+	getTotalCost() {
+		this.calculateCost();
+		return this.#totalCost;
+	}
+
 	getWoodTypeCharge() {
 		return this.#woodTypeCharge;
 	}
